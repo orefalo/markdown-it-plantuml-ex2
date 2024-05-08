@@ -16,6 +16,8 @@ module.exports = function markdownItPlantUmlEx(md, options = {}) {
   const openChar = openMarker.charCodeAt(0)
   const closeMarker = options.closeMarker || '```'
   const closeChar = closeMarker.charCodeAt(0)
+  const javaPath = options.javaPath || 'java'
+  const plantumlPath = options.plantumlPath || PlantUMLJarPath
 
   function render(tokens, idx, options, env, slf) {
     const { content, info } = tokens[idx]
@@ -25,13 +27,13 @@ module.exports = function markdownItPlantUmlEx(md, options = {}) {
       "-Dplantuml.include.path=" +
       [this.fileDirectoryPath, ExtensionConfigPath].join(path.delimiter),
       "-jar",
-      PlantUMLJarPath,
+      plantumlPath,
       "-pipe",
       "-tsvg",
       "-charset",
       "UTF-8"];
     try {
-      const svg = execSync('java ' + javaParams.join(' '), { input: content })
+      const svg = execSync(javaPath+' ' + javaParams.join(' '), { input: content })
       const $svg = cheerio.load(svg, { xmlMode: true })('svg')
       return $svg;
     }

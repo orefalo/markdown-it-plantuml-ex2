@@ -1,4 +1,4 @@
-# markdown-it-plantuml-ex
+# markdown-it-plantuml-ex2
 
 [![npm version](https://img.shields.io/npm/v/markdown-it-plantuml-ex.svg)](https://www.npmjs.com/package/markdown-it-plantuml-ex)
 [![CircleCI build](https://img.shields.io/circleci/project/github/xhinliang/markdown-it-plantuml-ex.svg)](https://circleci.com/gh/xhinliang/markdown-it-plantuml/tree/master)
@@ -30,16 +30,18 @@ You can visit [plantuml website](https://plantuml.com) for more details.
 Just install via npm or any other package manager of Node.
 
 ```bash
-$ npm i markdown-it-plantuml-ex --save
+$ npm i markdown-it-plantuml-ex2 --save
 ```
 
 ## Basic usage
 
-As we all known, markdown-it-plantuml-ex is a plugin of markdown-it, so you should setup markdown-it before you use markdown-it-plantuml-ex.
+As we all known, markdown-it-plantuml-ex2 is a plugin of markdown-it, so you should setup markdown-it before you use markdown-it-plantuml-ex2.
 
 ```js
-const md = require('markdown-it')()
-           .use(require('markdown-it-plantuml-ex'));
+import markit from "markdown-it";
+import plantuml from "markdown-it-plantuml-ex2";
+const md = markit();
+md.use(plantuml);
 ```
 
 See [markdown-it repository](https://github.com/markdown-it/markdown-it) for more details.
@@ -49,8 +51,10 @@ See [markdown-it repository](https://github.com/markdown-it/markdown-it) for mor
 ## Advanced usage
 
 ```js
-const md = require('markdown-it')()
-           .use(require('markdown-it-plantuml-ex'), options);
+import markit from "markdown-it";
+import plantuml from "markdown-it-plantuml-ex2";
+const md = markit();
+md.use(plantuml, options);
 ```
 
 Options:
@@ -58,6 +62,8 @@ Options:
   - __closeMarker__ - optional, defaults to "```" . String to use as closing delimiter.
   - __diagramName__ - optional, defaults to `uml`.
   - __render__ - optional, defaults to markdown-it image renderer. Renderer function for opening/closing tokens.
+  - __javaPath__ - optional string path to the java application, defaults to `java`
+  - __plantumlPath__ - optional string path to plantuml.jar, defaults to the internal
 
 ## License
 
